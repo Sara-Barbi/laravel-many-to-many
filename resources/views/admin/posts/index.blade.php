@@ -16,6 +16,11 @@
                 <div class="col-12 mt-5 mb-5">
                     <img class="w-100 product_img" src="{{$post->img}}" alt="">
                 </div>
+                <div class="mb-4 tags">
+                    @foreach($post->tags as $tag)
+                        {{$tag->name}}
+                    @endforeach
+                </div>
                 <p><strong class="info_smart">ingredients:</strong> {{$post->ingredients}}</p>
                 <ul class="p-0">
                     <strong class="info_smart">Description:</strong> 

@@ -33,6 +33,19 @@
         
     </div>
 
+    <label for="">Tags</label>
+    @foreach ($tags as $tag)
+        <div class="form-check">
+            <input class='form-check-input' type="checkbox" id="{{$tag->slug}}" 
+            name="tags[]" value="{{$tag->id}}" 
+            {{$post->tags->contains($tag) ? "checked" : ""}}>
+            <label class="form-check-label d-inline" for="{{$tag->slug}}">
+                {{$tag->name}}
+            </label>   
+        </div>
+    @endforeach
+   
+
     <label class="form-label m-3" for="content">content</label>
     <input type="text" name="content" id="content" class="form-control col-6 text-center " placeholder="Insert content"
     value="{{old("content")??$post->content}}">

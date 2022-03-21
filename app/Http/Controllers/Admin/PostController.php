@@ -97,7 +97,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories=Category::all();
-        return view('admin.posts.edit', compact('post','categories'));  
+        $tags=Tag::all();
+        return view('admin.posts.edit', compact('post','categories','tags'));  
     }
 
     /**
@@ -138,7 +139,7 @@ class PostController extends Controller
             }
        
             $data['slug']=$slugTmp;
-            $newPost->tags()->sync(isset($data['tags']) ? $data['tags']:[]);
+            $post->tags()->sync(isset($data['tags']) ? $data['tags']:[]);
             
            
             //inserisco i dati, salvo il post, lo spedisco nella index 

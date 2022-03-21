@@ -52,6 +52,11 @@
   list-style-type: none;
 }
 
+.tags {
+  color: #806426;
+  font-weight: 800;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
