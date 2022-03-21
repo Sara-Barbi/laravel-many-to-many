@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -17,7 +18,8 @@ class PostController extends Controller
     public function index()
     {
         $posts=Post::all();
-        return view('admin.posts.index', compact('posts'));
+        $tags=Tag::all();
+        return view('admin.posts.index', compact('posts','tags'));
     }
 
     /**
@@ -28,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('admin.posts.create',compact('categories'));
+        $tags=Tag::all();
+        return view('admin.posts.create',compact('categories','tags'));
     }
 
     /**
@@ -46,7 +49,7 @@ class PostController extends Controller
             "price"=>"required|numeric",
             "content"=>"required",
             "time_cooking"=>"required",
-            //"category_id"=>'nullable|exist:categories,id'       //in alcuni casi serve
+            //"category_id"=>'nullable|exist:categories,id'       //in alcuni casi serve, tipo 
 
             
 
@@ -65,7 +68,8 @@ class PostController extends Controller
         }
         $data['slug']=$slugTmp;
         //creo post vuoto, inserisco i dati, salvo il post, lo spedisco nella index
-        $newPost= new Post();   
+        $newPost= new Post();  
+        $newPost->tags()->sync(isset($data['tags']) ? $data['tags']:[]);
         $newPost->fill($data);     
         $newPost->save();                   
         return redirect()->route('admin.posts.index');   
@@ -134,7 +138,8 @@ class PostController extends Controller
             }
        
             $data['slug']=$slugTmp;
-    
+            $newPost->tags()->sync(isset($data['tags']) ? $data['tags']:[]);
+            
            
             //inserisco i dati, salvo il post, lo spedisco nella index 
             $post->update($data);                      

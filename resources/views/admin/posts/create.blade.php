@@ -21,9 +21,22 @@
                       {{ $category->name }}
                     </option>
                   @endforeach
-        </select>
-       
-    </div>
+        </select>   
+    </div>   
+    <label for="">Tags</label>
+        @foreach ($tags as $tag)
+            <div class="form-check">
+                <input class='form-check-input' type="checkbox" id="{{$tag->slug}}" 
+                name="tags[]" value="{{$tag->id}}" 
+                {{$tags->contains($tag) ? "unchecked" : ""}}>
+                <label class="form-check-label d-inline" for="{{$tag->slug}}">
+                    {{$tag->name}}
+                </label>   
+            </div>
+        @endforeach
+    </select>
+    
+
 
     <label for="content" class="form-label m-3">content</label>
     <input type="text" name="content" id="content" class="form-control col-6 text-center " placeholder="Insert content" value="{{old("content")}}"> <!--E' MOLTO IMPORTANTE CHE NAME E ID SIANO GUALI A CIO' CHE ABBIAMO NEL SERVER-->
