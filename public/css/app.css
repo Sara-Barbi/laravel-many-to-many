@@ -1,57 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-.info_smart {
-  color: rgba(130, 40, 40, 0.626);
-}
-
-.product_img {
-  transition: transform 0.2s;
-}
-
-.product_img:hover {
-  transform: scale(1.3);
-}
-
-.my_height {
-  height: 700px;
-  overflow: scroll;
-  background-color: rgba(255, 228, 196, 0.7);
-  border-radius: 15px;
-}
-
-.my_height::-webkit-scrollbar {
-  display: none;
-}
-
-.back {
-  background-color: rgba(255, 228, 196, 0.7);
-}
-
-.my_overapp {
-  height: 100vh;
-  overflow: scroll;
-  background-image: url("https://st4.depositphotos.com/6000140/i/600/depositphotos_199833048-stock-photo-blurred-background-modern-kitchen-with.jpg");
-  background-size: contain;
-}
-
-.my_overapp::-webkit-scrollbar {
-  display: none;
-}
-
-.back_show {
-  background-color: rgba(34, 33, 33, 0.666);
-  border-radius: 20px;
-  color: #e6e2e2;
-}
-
-.back_show .info_smart {
-  color: black;
-}
-
-.back_show li {
-  list-style-type: none;
-}
-
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -5046,7 +4994,6 @@ input[type=button].btn-block {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: 700px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
