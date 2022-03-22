@@ -15,9 +15,8 @@
     <div class="form-group">
         <label for="">Category</label>
         <select name="category_id" id="category_id" class="form-control">
-            <option value="">--seleziona categoria--</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">
+                    <option value="{{ old($category->id) }}">
                       {{ $category->name }}
                     </option>
                   @endforeach
@@ -26,11 +25,13 @@
     <label for="">Tags</label>
         @foreach ($tags as $tag)
             <div class="form-check">
-                <input class='form-check-input' type="checkbox" id="{{$tag->slug}}" 
-                name="tags[]" value="{{$tag->id}}">
-                <label class="form-check-label d-inline" for="{{$tag->slug}}">
+                <input class='form-check-input' type="checkbox" id="{{$tag->slug}}"
+                name="tags[]" value="{{$tag->id}}" 
+                {{old('tags') && in_array($tag->id,old('tags',[])) ? "checked" : ''}}>      
+                <label class="form-check-label d-inline" for="{{$tag->slug}}">  <!--sarebbe il nome con gli spazi con '-'-->
                     {{$tag->name}}
                 </label>   
+
             </div>
         @endforeach
     </select>

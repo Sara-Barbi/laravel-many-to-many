@@ -20,11 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')   //solo se utente è loggato
-->namespace('Admin')        //route:list
-->name('admin.')
-->prefix('admin')
+->namespace('Admin')        //route:list Api
+->name('admin.')            //api.
+->prefix('admin')           //posts
 ->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('/posts','PostController');
+    Route::get('/', 'HomeController@index')->name('home');  // get( /, PostController@index)->name('index');
+    Route::resource('/posts','PostController');             // get( /altro, PostController@index)->name('altro');
 });
 

@@ -69,7 +69,7 @@ class PostController extends Controller
         $data['slug']=$slugTmp;
         //creo post vuoto, inserisco i dati, salvo il post, lo spedisco nella index
         $newPost= new Post();  
-        $newPost->tags()->sync(isset($data['tags']) ? $data['tags']:[]);
+        $newPost->tags()->sync(isset($data['tags']) ? $data['tags']:[]);    //per tag si intende il tag all'interno dell'input checkbox in create e edit.Che da come risultato gli elementi checkkati.
         $newPost->fill($data);     
         $newPost->save();                   
         return redirect()->route('admin.posts.index');   

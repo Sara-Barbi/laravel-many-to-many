@@ -18,11 +18,11 @@
     <div class="form-group">
         <label for="">Category</label>
         <select name="category_id" id="category_id" class="form-control">
-            <option value="">--seleziona categoria--</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">
-                      {{ $category->name }}
-                      {{$category->id == old('category_id',$post->categories_id) ? 'selected' : ''}}
+                    <option value="{{$category->id}}"
+                        {{$category->id == old('category_id',$post->categories_id) ? 'selected' : ''}}>
+                        
+                        {{ $category->name }}
                     </option>
                   @endforeach
         </select>
@@ -38,7 +38,15 @@
         <div class="form-check">
             <input class='form-check-input' type="checkbox" id="{{$tag->slug}}" 
             name="tags[]" value="{{$tag->id}}" 
-            {{$post->tags->contains($tag) ? "checked" : ""}}>
+
+            @if($errors->any())
+                {{in_array($tag->id,old('tags',[])) ? "checked" : ''}}       
+            @else  
+                {{$post->tags->contains($tag) ? "checked" : ""}}
+                
+            @endif
+            >
+            <!--l'old permette due parametri, il primo è quando viene valorizato, il secondo è il default-->   
             <label class="form-check-label d-inline" for="{{$tag->slug}}">
                 {{$tag->name}}
             </label>   
